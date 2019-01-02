@@ -9,8 +9,9 @@ const todos = [{
     completed: false
 },{
     text: 'Go home',
-    completed: true
+    completed: true,
 }]
+
 
 const filters = {
     searchText: ''
@@ -32,8 +33,20 @@ const renderTodos = function(todos, filters){
 
 renderTodos(todos,filters)
 
+
 document.querySelector('#search-text').addEventListener('input', function(e){
     filters.searchText = e.target.value
     renderTodos(todos,filters)
+})
+
+document.querySelector('#name-form').addEventListener('submit', function(e){
+    e.preventDefault()
+    const newTodo = e.target.elements.newTodo.value
+    todos.push({
+        text: newTodo,
+        completed: false
+    })
+    renderTodos(todos, filters)
+    e.target.elements.newTodo.value = ''
 })
 

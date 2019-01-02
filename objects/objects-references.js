@@ -13,7 +13,7 @@ let myAccount = {
 
 let addIncome = function(account, amount) {
     account.income = account.income + amount
-}{}
+}
 
 let addExpense = function(account, amount) {
     account.expenses = account.expenses + amount
