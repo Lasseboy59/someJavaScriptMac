@@ -112,7 +112,7 @@ console.log(findNotes(notes,'like'))
 // console.log('removed: ' + notes.pop())
 // notes.push('My new note')
 
-// console.log(`You have ${notes.length} todos`)
+console.log(`You have ${notes.length} todos`)
 
 // console.log('shift: ' + notes.shift())
 
