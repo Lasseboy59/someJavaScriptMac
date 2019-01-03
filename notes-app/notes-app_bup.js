@@ -1,32 +1,45 @@
-let notes = []
+const notes = [{
+    title: 'My  next trip',
+    body: 'I would like to go to Spain'
+},{
+    title: 'Habbits die hard',
+    body: 'Do more exercise'
+},{
+    title: 'Office modification',
+    body: 'Get a new seat in office' 
+}]
 
 const filters = {
     searchText: ''
 }
 
- // check for existing saved data
- const notesJSON = localStorage.getItem('notes')
+// localStorage.setItem('location', 'Lohja')
+// console.log(localStorage.getItem('location'))
+// localStorage.removeItem('location')
+// localStorage.clear()
 
- if(notesJSON !== null){
-    notes = JSON.parse(notesJSON)
- }
+// const user = {
+//     name: 'Lasse',
+//     age: 45
+// }
+// const userJSON = JSON.stringify(user)
+// console.log(userJSON)
+// localStorage.setItem('user',userJSON)
+
+const userJSON = localStorage.getItem('user')
+const user = JSON.parse(userJSON)
+console.log(`${user.name} ${user.age}`)
 
 const renderNotes = function(notes, filters){
     const filteredNotes = notes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
- 
+
     document.querySelector('#notes').innerHTML = ''
 
     filteredNotes.forEach(function(note){
         const noteEl = document.createElement('p')
-
-        if(note.title.length > 0){
-            noteEl.textContent = note.title
-        } else {
-            noteEl.textContent = 'unnamed note'
-        }
-
+        noteEl.textContent = note.title
         document.querySelector('#notes').appendChild(noteEl)
     })
 }
@@ -34,13 +47,7 @@ const renderNotes = function(notes, filters){
 renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function(e){
-    notes.push({
-        title: '',
-        body: ''
-    })
-    localStorage.setItem('notes', JSON.stringify(notes))
-    renderNotes(notes, filters)
-    e.target.textContent = 'Clicked'
+    console.log('add a note')
 })  
 
 document.querySelector('#search-text').addEventListener('input', function(e){
