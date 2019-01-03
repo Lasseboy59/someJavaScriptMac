@@ -5,3 +5,5 @@ Check arrays/myExpenseTracker.js
 CMD + shift + R ( browser reset)
 
 All functionality in two file: index.html and notes-app.js (commit 5)
+
+notes-app refactored into 3 files
