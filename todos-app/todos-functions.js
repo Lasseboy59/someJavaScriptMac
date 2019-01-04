@@ -1,4 +1,4 @@
-// Read existing notes from the storege
+// Read existing todos from the storege
 
 const getSavedTodos = function() {
     const todosJSON = localStorage.getItem('todos')
@@ -11,7 +11,7 @@ const getSavedTodos = function() {
 }
 
 // Save the todos to local storage
-const saveTodos = function(notes) {
+const saveTodos = function(todos) {
     localStorage.setItem('todos',JSON.stringify(todos))
 }
 
@@ -34,25 +34,36 @@ const renderTodos = function(todos, filters){
         if(todo.text.length > 0){
             todoEl.textContent = todo.text
         } else {
-            todoEl.textContent = 'Unnamed note'
+            todoEl.textContent = 'Unnamed todo'
         }
         
-        document.querySelector('#todos').appendChild(todoEl)
+        document.querySelector('#todos').appendChild(generateTodoDOM(todo))
     
     })
 }
 
-//Get the DOM elements for an individual todo
-const generateTodoDOM = function(todos) {
-    document.querySelector('#name-form').addEventListener('submit', function(e){
-        e.preventDefault()
-        todos.push({
-            text: e.target.elements.newTodo.value,
-            completed: false
-        })
-        saveTodos(todos)
-        renderTodos(todos, filters)
-    })
+// Get the DOM elements for an individual todo
+const generateTodoDOM = function (todo) {
+    const todoEl = document.createElement('div')
+    const checkbox = document.createElement('input')
+    const textEl = document.createElement('span')
+    const button = document.createElement('button')
+
+    // Setup todo checkbox
+    checkbox.setAttribute('type', 'checkbox')
+
+    // Setp the button
+    todoEl.appendChild(checkbox)
+
+    // Setup the todo title text
+    textEl.textContent = todo.text
+    todoEl.appendChild(textEl)
+
+    // Setup the remove button
+    button.textContent = 'x'
+    todoEl.appendChild(button)
+
+    return todoEl
 }
 
 // Get the DOM elements for list array
