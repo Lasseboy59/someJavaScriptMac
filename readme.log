@@ -12,3 +12,7 @@ with Firefox debugger + esc (opens the console window)
 
 Made some fixes to todo-app conserning function generateTodoDOM() kept part of code
 in todo-app.ja
+
+commit_8: 
+- added uuidv4 library as an inline libray uuidv4.js
+- added checkbok functionality
