@@ -13,6 +13,14 @@ with Firefox debugger + esc (opens the console window)
 Made some fixes to todo-app conserning function generateTodoDOM() kept part of code
 in todo-app.ja
 
-commit_8: 
+commit_9: 
 - added uuidv4 library as an inline libray uuidv4.js
 - added checkbok functionality
+
+To take notes hash #id up use: location.hash
+
+e.g. location.hash.substring(1, 3)
+
+commit_10:
+- added functionality to notes-app
+- added second page and moving backwords

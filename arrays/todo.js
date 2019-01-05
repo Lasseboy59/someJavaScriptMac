@@ -58,14 +58,14 @@ const note_0 = findTodo(todos)
 console.log(note_0)
 console.log('----- 0 -----')
 
-
+console.log('----- 3 -----')
 const findTodo3 = function(todos,searchText){
     return todos.find(function(todo){
         return todo.text === searchText
     })
 }
 const note_3 = findTodo3(todos, 'Have some lunch')
-console.log(note_3)
+console.log(note_3.text)
 console.log('----- 3 -----')
 
 
