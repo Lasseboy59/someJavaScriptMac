@@ -26,7 +26,7 @@ commit_10:
 - added second page and moving backwords
 
 commit_11
--using getTime() and timestamp in notes-app
+-using getTime() and timestamp in notes-app  // mdn date
 
  const dayOne = new Date('January 21 2008 16:05:00')
  const timestampOne = dayOne.getTime()
@@ -38,4 +38,11 @@ commit_11
 } else {
      console.log(dayTwo.toString())
  }
- 
+
+commit_11:
+momentjs.com
+
+momment library: https://cdnjs.com/libraries/moment.js
+https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment-with-locales.min.js
+
+wired up moment().valueOf() part I 

@@ -1,3 +1,4 @@
+const timestamp = moment().valueOf()
 let notes = getSavedNotes()
 
 const filters = {
@@ -10,6 +11,8 @@ document.querySelector('#create-note').addEventListener('click', function(e){
     const idVar = uuidv4()
     notes.push({
         id: idVar,
+        createdAt: timestamp,
+        updatedAt: timestamp,
         title: '',
         body: ''
     })
@@ -37,32 +40,3 @@ window.addEventListener('storage', function(e){
     }
 })
 
-// Unix Epoch - January 1st 1970 00:00:00 // -60000 (minute before)
-// const now = new Date('January 21 2001 6:25:01')
-
-const now = new Date()
-const timestamp = now.getTime()
-// console.log(timestamp)
-
-const myDate = new Date(timestamp)
-console.log(myDate.getFullYear())
-
-// console.log(now.getTime())
-
-// console.log(`Year: ${now.getFullYear()}`)
-// console.log(`Month: ${now.getMonth()}`)
-// console.log(`Day of the month: ${now.getDate()}`)
-// console.log(`Hour: ${now.getHours()}`)
-// console.log(`Minutes: ${now.getMinutes()}`)
-// console.log(`Seconds: ${now.getSeconds()}`)
-
- const dayOne = new Date('January 21 2008 16:05:00')
- const timestampOne = dayOne.getTime()
- const dayTwo = new Date('January 21 2008 16:05:00')
- const timestampTwo = dayTwo.getTime()
-
- if(timestampOne < timestampTwo){
-     console.log(dayOne.toString())
-} else {
-     console.log(dayTwo.toString())
- }
