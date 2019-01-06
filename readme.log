@@ -46,3 +46,7 @@ momment library: https://cdnjs.com/libraries/moment.js
 https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment-with-locales.min.js
 
 wired up moment().valueOf() part I 
+
+commit_12
+
+added sorting functions to notes-app
