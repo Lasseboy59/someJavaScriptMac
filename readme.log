@@ -50,3 +50,7 @@ wired up moment().valueOf() part I
 commit_12
 
 added sorting functions to notes-app
+
+commit_13: 
+
+converting to arrow functions

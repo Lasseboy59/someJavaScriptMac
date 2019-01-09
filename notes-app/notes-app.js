@@ -10,7 +10,7 @@ const filters = {
 
 renderNotes(notes, filters)
 
-document.querySelector('#create-note').addEventListener('click', function(e){
+document.querySelector('#create-note').addEventListener('click', (e) => {
     const idVar = uuidv4()
     notes.push({
         id: idVar,
@@ -23,17 +23,17 @@ document.querySelector('#create-note').addEventListener('click', function(e){
     location.assign(`/edit.html#${idVar}`)
 })  
 
-document.querySelector('#search-text').addEventListener('input', function(e){
+document.querySelector('#search-text').addEventListener('input', (e) => {
     filters.searchText = e.target.value
     renderNotes(notes, filters)
 })
 
-document.querySelector('#filter-by').addEventListener('change', function(e){
+document.querySelector('#filter-by').addEventListener('change', (e) => {
     filters.sortBy = e.target.value
     renderNotes(notes, filters)
 })
 
-window.addEventListener('storage', function(e){
+window.addEventListener('storage', (e) => {
 
     // debugger
     // console.log('clicked')
