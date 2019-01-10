@@ -57,4 +57,7 @@ converting to arrow functions
 
 commit_14:
 
-using ternary operator
+- using ternary operator
+
+commit_15:
+- error handling

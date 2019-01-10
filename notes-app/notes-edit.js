@@ -1,3 +1,5 @@
+'use strict'
+
 const titleElement = document.querySelector('#note-title')
 const updateElement = document.querySelector('#last-edited')
 const bodyElement = document.querySelector('#note-body')
@@ -7,7 +9,7 @@ let notes = getSavedNotes()
 
 let note = notes.find((note) => note.id === noteId)
 
-if(note === undefined){
+if(!note){
     location.assign('/index.html')
 }
 
@@ -44,7 +46,7 @@ window.addEventListener('storage', (e) => {
     }
     let note = notes.find((note) => note.id === noteId)
     
-    if(note === undefined){
+    if(!note){
         location.assign('/index.html')
     }
     

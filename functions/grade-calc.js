@@ -21,20 +21,36 @@
 
 
  const studentGrade = function(score, maxScore){
-    const grade = (score / maxScore)*100
-    let letter = ''
-    if(score >= 90 && score <= 100) {
-        letter = 'A'
-    }else if (score >= 80 &&  score <= 89) {
-       letter = 'B'
-    } else if ( score >= 70 && score <= 70) {
-       letter = 'C'
-    } else if (score >= 60 && score <= 69) {
-       letter = 'D'
+    if ( typeof score === 'number' && typeof maxScore === 'number'){
+      const grade = (score / maxScore)*100
+      let letter = ''
+      if(score >= 90 && score <= 100) {
+          letter = 'A'
+      }else if (score >= 80 &&  score <= 89) {
+         letter = 'B'
+      } else if ( score >= 70 && score <= 70) {
+         letter = 'C'
+      } else if (score >= 60 && score <= 69) {
+         letter = 'D'
+      } else {
+         letter = 'F'
+      }
+      return `${score}/${maxScore} -> You got a ${letter} (${grade}%) `
+
     } else {
-       letter = 'F'
+       throw Error('Please provide numbers only')
     }
-    return `${score}/${maxScore} -> You got a ${letter} (${grade}%) `
+
 }
 
-console.log(studentGrade(50,100))
+// const result = studentGrade(a,100)
+// console.log(result)
+
+try {
+   const result = studentGrade(a,100)
+   console.log(result)
+} catch (e){
+   // console.log('Both inputs must be numbers')
+   console.log(e.message)
+}
+
