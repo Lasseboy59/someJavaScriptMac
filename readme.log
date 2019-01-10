@@ -47,10 +47,14 @@ https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment-with-locales.min.
 
 wired up moment().valueOf() part I 
 
-commit_12
+commit_12:
 
 added sorting functions to notes-app
 
 commit_13: 
 
 converting to arrow functions
+
+commit_14:
+
+using ternary operator
