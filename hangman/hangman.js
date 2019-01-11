@@ -2,10 +2,38 @@
 // No quesses ? -> ***
 // Guessed "c", "b", and "t" ? -> c*t
 
+const updateElement = document.querySelector('#puzzle')
+
 const Hangman = function(word, remainingGuesses){
     this.word = word.toLowerCase().split('')
     this.remainingGuesses = remainingGuesses
     this.guessedLetters = []
+    this.status = 'playing'
+}
+
+Hangman.prototype.calculateStatus = function(){
+    
+    // const finished = this.word.every((letter) => {
+    //     return this.guessedLetters.includes(letter)
+    // })
+
+    let finished = true
+
+    this.word.forEach((letter) => {
+        if(this.guessedLetters.includes(letter)){
+
+        } else {
+            finished = false
+        }
+    })
+
+    if(this.remainingGuesses === 0){
+        this.status = 'failed'
+    } else if (finished){
+        this.status = 'finished'
+    } else {
+        this.status = 'playing'
+    }
 }
 
 Hangman.prototype.getPuzzle = function(){
@@ -35,20 +63,18 @@ Hangman.prototype.makeGuess = function(guess){
     if(isUnique && isBadGuess){
         this.remainingGuesses--
     }
+    this.calculateStatus()
 }
 
-const gameOne = new Hangman ('Cat', 2)
-// Guess c, t, z
-// gameOne.makeGuess('c')
-// gameOne.makeGuess('t')
+Hangman.prototype.getStatusMessage = function(){
 
-console.log(gameOne.remainingGuesses)
-console.log(gameOne.getPuzzle()) //c*t
 
-window.addEventListener('keypress', function(e){
-    const guess = String.fromCharCode(e.charCode)
-    gameOne.makeGuess(guess)
-    console.log(gameOne.getPuzzle()) //c*t
-    console.log(gameOne.remainingGuesses)
-})
-
+    if(gameOne.status === 'playing'){
+        guessesLeft.textContent = `Playing -> Guesses left: ${gameOne.remainingGuesses}`
+    } else if (gameOne.status === 'failed'){
+        guessesLeft.textContent = `Failed -> Nice try! The word was ${gameOne.word.join('')}.`
+    } else {
+        guessesLeft.textContent = `Finished -> Great work! You guessed the word.`
+    }
+    
+}

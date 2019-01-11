@@ -7,6 +7,15 @@
 // Number: myNumber --> Number.prototype --> Object.prototype --> null
 // Boolean: myBoolean --> Boolean.prototype --> Object.prototype --> null
 
+const puzzleWord = document.querySelector('#puzzle')
+const guessesLeft = document.querySelector('#guesses-left')
+const gameOne = new Hangman ('Cat', 2)
 
-
-
+window.addEventListener('keypress', function(e){
+    const guess = String.fromCharCode(e.charCode)
+    if(gameOne.status === 'playing'){
+        gameOne.makeGuess(guess)
+        puzzleWord.textContent = gameOne.getPuzzle()
+        gameOne.getStatusMessage()
+    }
+})
