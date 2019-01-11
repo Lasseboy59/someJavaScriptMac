@@ -71,3 +71,6 @@ commit_17:
 commit_18:
 - Prototypal inheritance changed to classes
 - refactoring Person to class definition syntax
+
+commit_19:
+- refactored Hangman to class definition syntax
