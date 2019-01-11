@@ -67,3 +67,7 @@ commit_16:
 
 commit_17:
 - Hangman game finished
+
+commit_18:
+- Prototypal inheritance changed to classes
+- refactoring Person to class definition syntax

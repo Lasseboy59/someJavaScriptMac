@@ -68,11 +68,10 @@ Hangman.prototype.makeGuess = function(guess){
 
 Hangman.prototype.getStatusMessage = function(){
 
-
     if(gameOne.status === 'playing'){
         guessesLeft.textContent = `Playing -> Guesses left: ${gameOne.remainingGuesses}`
     } else if (gameOne.status === 'failed'){
-        guessesLeft.textContent = `Failed -> Nice try! The word was ${gameOne.word.join('')}.`
+        guessesLeft.textContent = `Failed  -> Nice try! The word was ${gameOne.word.join('')}.`
     } else {
         guessesLeft.textContent = `Finished -> Great work! You guessed the word.`
     }
