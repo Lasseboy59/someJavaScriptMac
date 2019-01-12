@@ -77,3 +77,7 @@ commit_19:
 
 commit_20:
 - getters and setters
+
+commit_21:
+- about closures & callback functions, see closures.js 
+- take in though when desingning the Recipe-app !!
