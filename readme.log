@@ -74,3 +74,6 @@ commit_18:
 
 commit_19:
 - refactored Hangman to class definition syntax
+
+commit_20:
+- getters and setters

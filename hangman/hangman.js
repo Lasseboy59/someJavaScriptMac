@@ -15,7 +15,7 @@ class Hangman {
         let finished = true
 
         this.word.forEach((letter) => {
-            if(this.guessedLetters.includes(letter)){
+            if(this.guessedLetters.includes(letter) || letter === ' '){
     
             } else {
                 finished = false
@@ -30,7 +30,7 @@ class Hangman {
             this.status = 'playing'
         }
     }
-    getPuzzle(){
+    get puzzle(){
         let puzzle = ''
 
         this.word.forEach((letter) => {
@@ -55,7 +55,7 @@ class Hangman {
         }
         this.calculateStatus()
     }
-    getStatusMessage(){
+    get statusMessage(){
         if(gameOne.status === 'playing'){
             guessesLeft.textContent = `Playing -> Guesses left: ${gameOne.remainingGuesses}`
         } else if (gameOne.status === 'failed'){
