@@ -81,3 +81,6 @@ commit_20:
 commit_21:
 - about closures & callback functions, see closures.js 
 - take in though when desingning the Recipe-app !!
+
+commit_22:
+- refactoring callbacks to promises in hangman/requests.js file
