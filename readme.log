@@ -84,3 +84,6 @@ commit_21:
 
 commit_22:
 - refactoring callbacks to promises in hangman/requests.js file
+
+commit_23:
+- promise chaining and (XMLHttpRequest) -> fetch
