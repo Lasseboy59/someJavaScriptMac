@@ -10,6 +10,7 @@ const getPuzzle = (wordCount) => {
     })
 }
 
+
 const getCountryCode = (countryCode) => {
     return fetch(`http://restcountries.eu/rest/v2/all`).then((response) => {
 
@@ -21,6 +22,19 @@ const getCountryCode = (countryCode) => {
     }).then((data) => {
         const country = data.find((country) => country.alpha2Code === countryCode)
         return country
+    })
+}
+
+const getLocation = () => {
+    return fetch(`http://ipinfo.io/json?token=3d4e7ffcf7483a`).then((response) => {
+
+    if(response.status === 200){
+        return response.json()
+    } else {
+        throw new Error ('Unable to fetch the location data')
+    }
+    }).then((location) => {
+        return location
     })
 }
 

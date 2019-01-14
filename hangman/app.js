@@ -30,11 +30,33 @@ getPuzzle('2').then((puzzle) => {
     console.log(`Error: ${err}`)
 })
 
+// getCountryCode('FI').then((country) => {
+//     console.log(country.name)
+// }).catch((err) => {
+//     console.log(`Error: ${err}`)
+// })
+
+// getLocation().then((location) => {
+//     console.log('Your location is currently: ' + location.country + ', ' + location.region + ', ' + location.city)
+// }).catch((err) => {
+//     console.log(`Error: ${err}`)
+// })
+
+
 getCountryCode('FI').then((country) => {
     console.log(country.name)
 }).catch((err) => {
     console.log(`Error: ${err}`)
 })
+
+getLocation().then((location) => {
+    return getCountryCode(location.country)
+}).then((data) => {
+    console.log('-> ' + data.name)
+}).catch((err) => {
+    console.log(`Error: ${err}`)
+})
+
 
 // getCountryCode('FI').then((country) => {
 //     console.log(country.name)
