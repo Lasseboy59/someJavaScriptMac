@@ -87,3 +87,9 @@ commit_22:
 
 commit_23:
 - promise chaining and (XMLHttpRequest) -> fetch
+
+commit_24:
+- a tiny promise chaining challenge
+
+commit_25:
+- some async-await changes to fetch functions

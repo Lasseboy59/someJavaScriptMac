@@ -57,6 +57,21 @@ getLocation().then((location) => {
     console.log(`Error: ${err}`)
 })
 
+getCurrentCountry().then((country) => {
+    console.log('--> ' + country.name)
+}).catch((error) => {
+    console.log(`Error: ${error}`)
+})
+
+
+// console.log('---')
+
+// getLocation().then((location) => {
+//     console.log('Your location is currently: ' + location.country + ', ' + location.region + ', ' + location.city)
+// }).catch((err) => {
+//     console.log(`Error: ${err}`)
+// })
+
 
 // getCountryCode('FI').then((country) => {
 //     console.log(country.name)
