@@ -93,3 +93,6 @@ commit_24:
 
 commit_25:
 - some async-await changes to fetch functions
+
+commit_26:
+- some code cleaning in app.ja and requests.js, left getLocation & getCountryCode functions remaining
