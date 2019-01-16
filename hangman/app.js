@@ -13,22 +13,36 @@
 
 const puzzleWord = document.querySelector('#puzzle')
 const guessesLeft = document.querySelector('#guesses-left')
-const gameOne = new Hangman ('Car Parts', 2)
+let gameOne
 
 window.addEventListener('keypress', (e) => {
     const guess = String.fromCharCode(e.charCode)
     if(gameOne.status === 'playing'){
         gameOne.makeGuess(guess)
-        puzzleWord.textContent = gameOne.puzzle
-        gameOne.statusMessage
+        render()
     }
 })
 
-getPuzzle('2').then((puzzle) => {
-    console.log(puzzle)
-}).catch((err) => {
-    console.log(`Error: ${err}`)
-})
+const render = () => {
+    puzzleWord.textContent = gameOne.puzzle
+    gameOne.statusMessage
+}
+
+const startGame = async () => {
+    const puzzle = await getPuzzle('1')
+    gameOne = new Hangman(puzzle, 5)
+    render()
+}
+
+document.querySelector('#reset').addEventListener('click', startGame)
+
+startGame()
+
+// getPuzzle('2').then((puzzle) => {
+//     console.log(puzzle)
+// }).catch((err) => {
+//     console.log(`Error: ${err}`)
+// })
 
 // getCurrentCountry().then((country) => {
 //     console.log('--> ' + country.name)

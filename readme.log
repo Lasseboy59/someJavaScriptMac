@@ -96,3 +96,6 @@ commit_25:
 
 commit_26:
 - some code cleaning in app.ja and requests.js, left getLocation & getCountryCode functions remaining
+
+commit_27:
+- hangman-game functions ready 
