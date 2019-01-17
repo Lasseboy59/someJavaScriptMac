@@ -108,3 +108,6 @@ commit_29:
 - changed http-requests to requests without http infrontof in Hangman-game//
 - http://ipinfo.io/json?token=3d4e7ffcf7483a -> //ipinfo.io/json?token=3d4e7ffcf7483a
 - so that they work on both https and http sites
+
+commit_30:
+- basic boilerplate babel installed with -g flag
