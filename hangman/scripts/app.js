@@ -24,8 +24,15 @@ window.addEventListener('keypress', (e) => {
 })
 
 const render = () => {
-    puzzleWord.textContent = gameOne.puzzle
+    puzzleWord.innerHTML = ''
+    // puzzleWord.textContent = gameOne.puzzle
     gameOne.statusMessage
+
+    gameOne.puzzle.split('').forEach((letter) => {
+        const letterEl = document.createElement('span')
+        letterEl.textContent = letter
+        puzzleWord.appendChild(letterEl)
+    })
 }
 
 const startGame = async () => {

@@ -99,3 +99,7 @@ commit_26:
 
 commit_27:
 - hangman-game functions ready 
+
+commit_28:
+- cleaning of hangman.js, commented code taken away
+- some refactoring by using CSS-styles with layout outputs
