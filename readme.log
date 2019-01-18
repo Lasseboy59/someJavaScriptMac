@@ -111,3 +111,6 @@ commit_29:
 
 commit_30:
 - basic boilerplate babel installed with -g flag
+
+commit_31:
+- boilerplate without webpack

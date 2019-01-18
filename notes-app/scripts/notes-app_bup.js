@@ -89,4 +89,3 @@ document.querySelector('#filter-by').addEventListener('change', function(e){
 // const newParagraph = document.createElement('p')
 // newParagraph.textContent = 'This a new element from javaScript'
 // document.querySelector('body').appendChild(newParagraph)
-
