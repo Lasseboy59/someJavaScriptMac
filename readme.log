@@ -118,3 +118,11 @@ commit_31:
 commit_34:
 - installing: /boilerplate$ npm install webpack@4.5.0 webpack-cli@2.0.14
 - boilerplate ready for use
+
+commit_35:
+- converting notes-app to webpack
+- /notes-app$ npm install moment uuid
+- npm install uuid, import uuidv4 from 'uuid/v4'
+- npm install moment, import validator from 'validator';
+
+- small changes to boilerplate & hangman ported to webpack

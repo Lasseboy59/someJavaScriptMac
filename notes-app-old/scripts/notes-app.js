@@ -1,6 +1,5 @@
 'use strict'
 
-const timestamp = moment().valueOf()
 let notes = getSavedNotes()
 
 const filters = {
@@ -14,6 +13,7 @@ renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', (e) => {
     const idVar = uuidv4()
+    const timestamp = moment().valueOf()
     notes.push({
         id: idVar,
         createdAt: timestamp,
