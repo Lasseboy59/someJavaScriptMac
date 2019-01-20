@@ -126,3 +126,7 @@ commit_35:
 - npm install moment, import validator from 'validator';
 
 - small changes to boilerplate & hangman ported to webpack
+
+commit_36: 
+- converting Hangman to webpack once again
+- made few corrections to Hangman (error in converting to webpack)

@@ -25,8 +25,7 @@ window.addEventListener('keypress', (e) => {
 
 const render = () => {
     puzzleWord.innerHTML = ''
-    // puzzleWord.textContent = gameOne.puzzle
-    gameOne.statusMessage
+    guessesLeft.textContent = gameOne.statusMessage
 
     gameOne.puzzle.split('').forEach((letter) => {
         const letterEl = document.createElement('span')
