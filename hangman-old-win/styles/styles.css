@@ -1,17 +1,3 @@
-
-/* #puzzle, button {
-    color: red;
-} */
-
-/* button#puzzle, button {
-    color: red;
-} */
-
-/* .warning {
-    color: white;
-    background-color: red;
-} */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -56,7 +42,7 @@ p {
 }
 
 .button {
-    background: #6116b1;
+    background: #4c2080;
     border: none;
     border-bottom: 2px solid #603a88;
     cursor: pointer;

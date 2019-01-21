@@ -2,8 +2,6 @@
 // No quesses ? -> ***
 // Guessed "c", "b", and "t" ? -> c*t
 
-const updateElement = document.querySelector('#puzzle')
-
 class Hangman {
     constructor(word, remainingGuesses){
         this.word = word.toLowerCase().split('')
@@ -55,6 +53,7 @@ class Hangman {
         }
         this.calculateStatus()
     }
+
     get statusMessage(){
         if(this.status === 'playing'){
             return `Playing -> Guesses left: ${this.remainingGuesses}`
@@ -65,3 +64,5 @@ class Hangman {
         }
     }
 }
+
+export { Hangman as default }

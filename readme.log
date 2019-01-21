@@ -130,3 +130,6 @@ commit_35:
 commit_36: 
 - converting Hangman to webpack once again
 - made few corrections to Hangman (error in converting to webpack)
+
+commit_37:
+- different repos for Hangman mac and win

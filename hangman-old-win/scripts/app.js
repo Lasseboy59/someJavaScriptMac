@@ -12,15 +12,13 @@
 // Response - What was actually done
 
 const puzzleWord = document.querySelector('#puzzle')
-const guessesLeft = document.querySelector('#guesses-left')
+const guessesLeft = document.querySelector('#status')
 let gameOne
 
 window.addEventListener('keypress', (e) => {
     const guess = String.fromCharCode(e.charCode)
-    if(gameOne.status === 'playing'){
         gameOne.makeGuess(guess)
         render()
-    }
 })
 
 const render = () => {
