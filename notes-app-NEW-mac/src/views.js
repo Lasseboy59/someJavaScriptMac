@@ -1,28 +1,6 @@
-'use strict'
-
-// Read existing notes from the storege
-const getSavedNotes = () => {
-    const notesJSON = localStorage.getItem('notes')
-
-    try {
-        return notesJSON !== null ? JSON.parse(notesJSON) : []
-    } catch(e) {
-        return []
-    }
-}
-// Save the notes to local storage
-const saveNotes = (notes) => {
-    localStorage.setItem('notes', JSON.stringify(notes))
-}
-
-// Remove a note from the list
-const removeNote = (id) => {
-    const noteIndex = notes.findIndex((note) => note.id === id)
-
-    if(noteIndex > -1) {
-        notes.splice(noteIndex, 1)
-    }
-}
+import moment from 'moment'
+import { getFilters } from './filters';
+import { sortNotes, getNotes } from './notes'
 
 // Generate the DOM structure for a note
 const generateNoteDom = (note) => {
@@ -52,7 +30,7 @@ const generateNoteDom = (note) => {
     noteEl.classList.add('list-item__title')
     noteEl.appendChild(textEl)
 
-    // Setup thr link
+    // Setup the link
     noteEl.setAttribute('href', `/edit.html#${note.id}`)
     textEl.classList.add('list-item')
 
@@ -65,45 +43,11 @@ const generateNoteDom = (note) => {
     return noteEl
 }
 
-// Sort your notes by one of three ways
-const sortNotes = (notes, sortBy) => {
-    if(sortBy === 'byEdited'){
-        return notes.sort((a, b) => {
-            if(a.updatedAt > b.updatedAt) {
-                return -1
-            } else if (a.updatedAt < b.updatedAt){
-                return 1
-            } else {
-                return 0
-            }
-        })
-    } else if(sortBy === 'byCreated'){
-        return notes.sort((a, b) => {
-            if(a.createdAt > b.createdAt) {
-                return -1
-            } else if (a.createdAt < b.createdAt){
-                return 1
-            } else {
-                return 0
-            }
-        })
-    } else if(sortBy === 'alphabetically'){
-        return notes.sort((a, b) => {
-            if(a.title.toLowerCase() > b.title.toLowerCase()) {
-                return 1
-            } else if (a.title.toLowerCase() < b.title.toLowerCase()){
-                return -1
-            } else {
-                return 0
-            }
-        })
-    }
-}
-
 // Render application notes
-const renderNotes = (notes, filters) => {
+const renderNotes = () => {
     const notesEl = document.querySelector('#notes')
-    notes = sortNotes(notes, filters.sortBy)
+    const filters = getFilters()
+    const notes = sortNotes(filters.sortBy)
     const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
  
     notesEl.innerHTML = ''
@@ -121,7 +65,25 @@ const renderNotes = (notes, filters) => {
     }
 }
 
-// Generate last edited message
-const generateLastEdited = (timestamp) => {
-    return `Last edited ${moment(timestamp).fromNow()}`
+const initializeEditPage = (noteId) => {
+    const titleElement = document.querySelector('#note-title')
+    const bodyElement = document.querySelector('#note-body')
+    const updateElement = document.querySelector('#last-edited')
+    const notes = getNotes()
+    const note = notes.find((note) => note.id === noteId)
+    
+    if(!note){
+        location.assign('/index.html')
+    }
+    
+    titleElement.value = note.title
+    bodyElement.value = note.body
+    updateElement.textContent = generateLastEdited(note.updatedAt)
 }
+
+ // Generate last edited message
+ const generateLastEdited = (timestamp) => {
+     return `Last edited ${moment(timestamp).fromNow()}`
+ }
+
+export { generateNoteDom, generateLastEdited, renderNotes, initializeEditPage }

@@ -121,9 +121,9 @@ commit_34:
 
 commit_35:
 - converting notes-app to webpack
-- /notes-app$ npm install moment uuid
+- npm install moment, import moment from 'moment';
 - npm install uuid, import uuidv4 from 'uuid/v4'
-- npm install moment, import validator from 'validator';
+- npm install validator, import validator from 'validator';
 
 - small changes to boilerplate & hangman ported to webpack
 
@@ -133,3 +133,6 @@ commit_36:
 
 commit_37:
 - different repos for Hangman mac and win
+
+commit_38:
+- notes-app to webpack one bug remaining in layout index-page last edited
