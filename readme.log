@@ -139,3 +139,6 @@ commit_38:
 
 commit_39:
 - corretted small typo causing layout error
+
+commit_40:
+- converting todos-app to webpack bundle hanging ...
