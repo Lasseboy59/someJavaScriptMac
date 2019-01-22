@@ -32,7 +32,7 @@ const generateNoteDom = (note) => {
 
     // Setup the link
     noteEl.setAttribute('href', `/edit.html#${note.id}`)
-    textEl.classList.add('list-item')
+    noteEl.classList.add('list-item')
 
 
     // Setup the statusmessage

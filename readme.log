@@ -136,3 +136,6 @@ commit_37:
 
 commit_38:
 - notes-app to webpack one bug remaining in layout index-page last edited
+
+commit_39:
+- corretted small typo causing layout error
