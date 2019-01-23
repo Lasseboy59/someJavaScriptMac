@@ -32,7 +32,6 @@ const createTodo = (text) => {
 }
 
 const removeTodo = (id) => {
-    console.log(id)
     const todoIndex = todos.findIndex((todo) => todo.id === id)
 
     if(todoIndex > -1){

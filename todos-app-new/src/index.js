@@ -1,31 +1,15 @@
-// Set up index.html to load the bundle
-// Make sure to load uuid via an npm module when necessary
-import uuidv4 from 'uuid/v4'
 import { getFilters, setFilters } from './filters'
 import { getTodos, createTodo, removeTodo, toggleTodo } from './todos'
 import { renderTodos, generateSummaryDOM, generateTodoDOM } from './views'
 
-// Render initial todos
-// console.log(getTodos())
-
+/***** Some test code *********/
 // console.log(getFilters())
 // setFilters({
 //     searchText: 'katu',
 //     completed: false 
 // })
 // console.log(getFilters())
-
-// console.log(getTodos())
-// createTodo('test4')
-// removeTodo('6b60ea5c-43ff-473c-aa16-88e231970566')
-// console.log(getTodos())
-
-// toggleTodo('8aa3bef5-1730-4176-8691-11b3d7933461')
-// console.log(getTodos())
-// toggleTodo('47940521-1b50-4183-b9d5-74ea0853da86')
-// console.log(getTodos())
-
-getTodos() 
+/***** Some test code *********/
 
 renderTodos()
 
@@ -34,7 +18,6 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
     setFilters({
         searchText: e.target.value
     })
-    console.log(e.target.value)
     renderTodos()
 })
 
@@ -51,28 +34,17 @@ document.querySelector('#hide-completed').addEventListener('change',(e) => {
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
     e.preventDefault()
     const text = e.target.elements.text.value.trim()
+    
     if(text.length > 0){
         createTodo(text)
+        renderTodos()
+        e.target.elements.text.value = ''
     }
-    e.target.elements.text.value = ''
-    renderTodos()
 })
 
 // Bonus: Add a watcher for local storage
-
-
-// Bring todos-applicationCache
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+window.addEventListener('storage', (e) => { 
+    if(e.key === 'todos'){
+        renderTodos()
+    }
+})

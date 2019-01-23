@@ -1,5 +1,5 @@
-import { getTodos, removeTodo, saveTodos, toggleTodo } from './todos'
-import { getFilters, setFilters } from './filters'
+import { getTodos, removeTodo, toggleTodo } from './todos'
+import { getFilters } from './filters'
 
 // Render application todos
 const renderTodos = () => {
@@ -7,18 +7,16 @@ const renderTodos = () => {
     const filters = getFilters()
     const todos = getTodos()
 
-    // const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
-
     const filteredTodos = todos.filter((todo) => {
-        if(!filters.completed){
-            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        } else{
-            return !todo.completed
-        }
+        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const completedMatch = !filters.completed || !todo.completed
+
+        return searchTextMatch && completedMatch
     })
+    const incompleteTodos = filteredTodos.filter((todo) => !todo.completed)
 
     todoEl.innerHTML = ''
-    document.querySelector('#todos').appendChild(generateSummaryDOM(filteredTodos))
+    document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos))
 
     if(filteredTodos.length > 0) {
         filteredTodos.forEach((todo) => {
@@ -30,12 +28,7 @@ const renderTodos = () => {
         emptyMessage.textContent = 'No todos to show'
         todoEl.appendChild(emptyMessage)
     }
-    console.log(todos)
 }
-
-// generateTodoDOM   event listeners from todos.js iether remove or toggle
-// Arguments: todo
-// Return value: the todo element
 
 // Get the DOM elements for an individual todo
 const generateTodoDOM = (todo) => {
@@ -74,11 +67,6 @@ const generateTodoDOM = (todo) => {
 
     return todoEl
 }
-
-
-// generateSummaryDOM
-// Arguments: incompletedTodos
-// Return value: the summary element
 
 // Get the DOM elements for list array
 const generateSummaryDOM = (filteredTodos) => {

@@ -145,3 +145,7 @@ commit_40:
 
 commit_41:
 - minor errors / difficulties with filtering
+
+commit_42:
+- minor improvements, left some test code into index.js
+- conversion todo-app ready
