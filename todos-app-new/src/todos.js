@@ -2,6 +2,7 @@ import uuidv4 from 'uuid/v4'
 
 let todos = []
 
+// Read existing todos from the storege
 const loadTodos = () => {
     const todosJSON = localStorage.getItem('todos')
 
@@ -20,15 +21,11 @@ const saveTodos = () => {
 // Expose todos from module
 const getTodos = () => todos
 
-// createTodo
-// Arguments: todo text
-// Return value: none
 const createTodo = (text) => {
-    console.log(text)
     const id = uuidv4()
     todos .push({
         id: id,
-        text: '',
+        text: text,
         completed: false
     })
     saveTodos()
@@ -52,7 +49,6 @@ const toggleTodo = (id) => {
     }
 }
 
-// Make sure to call loadTodos and setup the exports
 todos = loadTodos()
 
 export { removeTodo, getTodos, createTodo, toggleTodo }

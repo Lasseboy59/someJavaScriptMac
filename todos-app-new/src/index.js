@@ -3,10 +3,10 @@
 import uuidv4 from 'uuid/v4'
 import { getFilters, setFilters } from './filters'
 import { getTodos, createTodo, removeTodo, toggleTodo } from './todos'
-import { renderTodos } from './views'
+import { renderTodos, generateSummaryDOM, generateTodoDOM } from './views'
 
 // Render initial todos
-console.log(getTodos())
+// console.log(getTodos())
 
 // console.log(getFilters())
 // setFilters({
@@ -34,14 +34,12 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
     setFilters({
         searchText: e.target.value
     })
+    console.log(e.target.value)
     renderTodos()
 })
 
 // Set up checkbox handler
 document.querySelector('#hide-completed').addEventListener('change',(e) => {
-    console.log('hide')
-    // const filters = getFilters()
-    // filters.completed = e.target.checked
     setFilters({
         completed: e.target.checked
     })
@@ -52,20 +50,12 @@ document.querySelector('#hide-completed').addEventListener('change',(e) => {
 // Set up form submission handler
 document.querySelector('#new-todo').addEventListener('submit', (e) => {
     e.preventDefault()
-    const todos = getTodos()
     const text = e.target.elements.text.value.trim()
-    // console.log(text)
     if(text.length > 0){
-        todos.push({
-            id: uuidv4(),
-            text,
-            completed: false
-        })
-        // createTodo(text)
-        renderTodos()
+        createTodo(text)
     }
-    renderTodos()
     e.target.elements.text.value = ''
+    renderTodos()
 })
 
 // Bonus: Add a watcher for local storage

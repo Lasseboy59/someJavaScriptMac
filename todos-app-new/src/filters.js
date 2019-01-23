@@ -10,9 +10,10 @@ const setFilters = (updates) => {
     if(typeof updates.searchText === 'string') {
         filters.searchText = updates.searchText
     }
-    if(typeof updates.completed === false){
+
+    if(updates.completed === false){
         filters.completed = false
-    } else if (updates.completed !== false){
+    } else {
         filters.completed = true
     }
 }

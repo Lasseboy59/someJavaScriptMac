@@ -142,3 +142,6 @@ commit_39:
 
 commit_40:
 - converting todos-app to webpack bundle hanging ...
+
+commit_41:
+- minor errors / difficulties with filtering

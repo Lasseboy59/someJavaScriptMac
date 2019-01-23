@@ -1,4 +1,4 @@
-import { getTodos, removeTodo, saveTodos } from './todos'
+import { getTodos, removeTodo, saveTodos, toggleTodo } from './todos'
 import { getFilters, setFilters } from './filters'
 
 // Render application todos
@@ -6,6 +6,9 @@ const renderTodos = () => {
     const todoEl = document.querySelector('#todos')
     const filters = getFilters()
     const todos = getTodos()
+
+    // const filteredTodos = todos.filter((todo) => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
+
     const filteredTodos = todos.filter((todo) => {
         if(!filters.completed){
             return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -27,6 +30,7 @@ const renderTodos = () => {
         emptyMessage.textContent = 'No todos to show'
         todoEl.appendChild(emptyMessage)
     }
+    console.log(todos)
 }
 
 // generateTodoDOM   event listeners from todos.js iether remove or toggle
@@ -46,9 +50,7 @@ const generateTodoDOM = (todo) => {
     checkbox.checked = todo.completed 
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', (e) => {
-        let todoId = e.target.id
-        toggleTodo(todoId)
-        saveTodos()
+        toggleTodo(todo.id)
         renderTodos()
     })
 
@@ -66,9 +68,7 @@ const generateTodoDOM = (todo) => {
     button.classList.add('button', 'button--text')
     todoEl.appendChild(button)
     button.addEventListener('click', (e) => {
-        let todoId = e.target.value
-        console.log(todoId)
-        removeTodo(todoId)
+        removeTodo(todo.id)
         renderTodos()
     })
 
