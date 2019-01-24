@@ -18,4 +18,13 @@ const setFilters = (updates) => {
     }
 }
 
+// const setFilters = ({ searchText, completed }) => {
+//     if(typeof searchText === 'string') {
+//         filters.searchText = searchText
+//     }
+//     if(typeof completed === 'boolean') {
+//         filters.completed = completed
+//     }
+// }
+
 export { getFilters, setFilters }

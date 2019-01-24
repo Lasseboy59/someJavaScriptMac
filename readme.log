@@ -149,3 +149,10 @@ commit_41:
 commit_42:
 - minor improvements, left some test code into index.js
 - conversion todo-app ready
+
+commit_43:
+- rest and spread operator in boilerplate-copy
+- installed: npm install babel-plugin-transform-object-rest-spread@6.26.0 also in boilerplate
+- and adde to webpack.config -> plugins: ['transform-object-rest-spread'] also in boilerplate
+- destructuring in todo-app filters and views
+- other option in todo-app-new / filters.js

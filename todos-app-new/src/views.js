@@ -5,6 +5,7 @@ import { getFilters } from './filters'
 const renderTodos = () => {
     const todoEl = document.querySelector('#todos')
     const filters = getFilters()
+    // const {searchText, hideCompleted} = getFilters( )
     const todos = getTodos()
 
     const filteredTodos = todos.filter((todo) => {
