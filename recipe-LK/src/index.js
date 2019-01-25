@@ -1,12 +1,12 @@
-import { createNote } from './recipes'
+import { createRecipe } from './recipes'
 import { setFilters } from './filters'
-import { renderNotes } from './views'
+import { renderRecipes } from './views'
 
 
-renderNotes()
+renderRecipes()
 
 document.querySelector('#create-recipe').addEventListener('click', (e) => {
-    const note = createNote()
+    const note = createRecipe()
     location.assign(`/edit.html#${note.id}`)
 })  
 
@@ -14,19 +14,19 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
     setFilters({
         searchText: e.target.value
     })
-    renderNotes()
+    renderRecipes()
 })
 
 document.querySelector('#filter-by').addEventListener('change', (e) => {
     setFilters({
         sortBy: e.target.value
     })
-    renderNotes()
+    renderRecipes()
 })
 
 window.addEventListener('storage', (e) => { 
     if(e.key === 'notes'){
-        renderNotes()
+        renderRecipes()
     }
 })
 

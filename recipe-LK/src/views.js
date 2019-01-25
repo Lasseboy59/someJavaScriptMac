@@ -1,73 +1,73 @@
 import moment from 'moment'
 import { getFilters } from './filters';
-import { sortNotes, getNotes } from './recipes'
+import { sortRecipes, getRecipes } from './recipes'
 
-// Generate the DOM structure for a note
-const generateNoteDom = (note) => {
-    const noteEl = document.createElement('a')
+// Generate the DOM structure for a recipe
+const generateRecipeDom = (recipe) => {
+    const recipeEL = document.createElement('a')
     const textEl = document.createElement('p')
     const statusEl = document.createElement('p')
     const button = document.createElement('button')
 
-    // Setup the note title text
-    if(note.title.length > 0){
-        textEl.textContent = note.title
+    // Setup the recipe title text
+    if(recipe.title.length > 0){
+        textEl.textContent = recipe.title
     } else {
         textEl.textContent = 'unnamed recipe'
     }
 
-    noteEl.classList.add('list-item__title')
-    noteEl.appendChild(textEl)
+    recipeEL.classList.add('list-item__title')
+    recipeEL.appendChild(textEl)
 
     // Setup the link
-    noteEl.setAttribute('href', `/edit.html#${note.id}`)
-    noteEl.classList.add('list-item')
+    recipeEL.setAttribute('href', `/edit.html#${recipe.id}`)
+    recipeEL.classList.add('list-item')
 
 
     // Setup the statusmessage
-    statusEl.textContent = generateLastEdited(note.updatedAt)
+    statusEl.textContent = generateLastEdited(recipe.updatedAt)
     statusEl.classList.add('list-item__subtitle')
-    noteEl.appendChild(statusEl)
+    recipeEL.appendChild(statusEl)
 
-    return noteEl
+    return recipeEL
 }
 
-// Render application notes
-const renderNotes = () => {
-    const notesEl = document.querySelector('#recipes')
+// Render application recipes
+const renderRecipes = () => {
+    const recipesEL = document.querySelector('#recipes')
     const filters = getFilters()
-    const notes = sortNotes(filters.sortBy)
-    const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
+    const recipes = sortRecipes(filters.sortBy)
+    const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
  
-    notesEl.innerHTML = ''
+    recipesEL.innerHTML = ''
 
-    if(filteredNotes.length > 0){
-        filteredNotes.forEach((note) => {
-            const noteEl = generateNoteDom(note)
-            notesEl.appendChild(noteEl)
+    if(filteredRecipes.length > 0){
+        filteredRecipes.forEach((recipe) => {
+            const recipeEL = generateRecipeDom(recipe)
+            recipesEL.appendChild(recipeEL)
         })
     } else {
         const emptyMessage = document.createElement('p')
-        emptyMessage.textContent = 'No notes to show'
+        emptyMessage.textContent = 'No recipes to show'
         emptyMessage.classList.add('empty-message')
-        notesEl.appendChild(emptyMessage)
+        recipesEL.appendChild(emptyMessage)
     }
 }
 
-const initializeEditPage = (noteId) => {
+const initializeEditPage = (recipeId) => {
     const titleElement = document.querySelector('#recipe-title')
     const bodyElement = document.querySelector('#recipe-body')
     const updateElement = document.querySelector('#last-edited')
-    const notes = getNotes()
-    const note = notes.find((note) => note.id === noteId)
+    const recipes = getRecipes()
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
     
-    if(!note){
+    if(!recipe){
         location.assign('/index.html')
     }
     
-    titleElement.value = note.title
-    bodyElement.value = note.body
-    updateElement.textContent = generateLastEdited(note.updatedAt)
+    titleElement.value = recipe.title
+    bodyElement.value = recipe.body
+    updateElement.textContent = generateLastEdited(recipe.updatedAt)
 }
 
  // Generate last edited message
@@ -75,4 +75,4 @@ const initializeEditPage = (noteId) => {
      return `Last edited ${moment(timestamp).fromNow()}`
  }
 
-export { generateNoteDom, generateLastEdited, renderNotes, initializeEditPage }
+export { generateRecipeDom, generateLastEdited, renderRecipes, initializeEditPage }

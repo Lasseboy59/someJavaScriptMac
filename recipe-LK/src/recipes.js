@@ -1,55 +1,55 @@
 import moment from 'moment';
 import uuidv4 from 'uuid/v4'
 
-let notes = []
+let recipes = []
 
-// Read existing notes from the storege
-const loadNotes = () => {
-    const notesJSON = localStorage.getItem('notes')
+// Read existing recipes from the storege
+const loadRecipes = () => {
+    const recipesJSON = localStorage.getItem('recipes')
 
     try {
-        return notesJSON !== null ? JSON.parse(notesJSON) : []
+        return recipesJSON !== null ? JSON.parse(recipesJSON) : []
     } catch(e) {
         return []
     }
 }
 
-// Expose notes from module
-const getNotes = () => notes
+// Expose recipes from module
+const getRecipes = () => recipes
 
-const createNote = () => {
-    const newNote = {
+const createRecipe = () => {
+    const newRecipe = {
         id: uuidv4(),
         createdAt: moment().valueOf(),
         updatedAt: moment().valueOf(),
         title: '',
         body: ''
     }
-    notes.push(newNote)
-    saveNotes()
+    recipes.push(newRecipe)
+    saveRecipes()
 
-    return newNote
+    return newRecipe
 } 
 
-// Save the notes to local storage
-const saveNotes = () => {
-    localStorage.setItem('notes', JSON.stringify(notes))
+// Save the recipes to local storage
+const saveRecipes = () => {
+    localStorage.setItem('recipes', JSON.stringify(recipes))
 }
 
-// Remove a note from the list
-const removeNote = (id) => {
-    const noteIndex = notes.findIndex((note) => note.id === id)
+// Remove a recipe from the list
+const removeRecipe = (id) => {
+    const recipeIndex = recipes.findIndex((recipe) => recipe.id === id)
 
-    if(noteIndex > -1) {
-        notes.splice(noteIndex, 1)
-        saveNotes()
+    if(recipeIndex > -1) {
+        recipes.splice(recipeIndex, 1)
+        saveRecipes()
     }
 }
 
-// Sort your notes by one of three ways
-const sortNotes = (sortBy) => {
+// Sort your recipes by one of three ways
+const sortRecipes = (sortBy) => {
     if (sortBy === 'byEdited') {
-        return notes.sort((a, b) => {
+        return recipes.sort((a, b) => {
             if (a.updatedAt > b.updatedAt) {
                 return -1
             } else if (a.updatedAt < b.updatedAt) {
@@ -59,7 +59,7 @@ const sortNotes = (sortBy) => {
             }
         })
     } else if (sortBy === 'byCreated') {
-        return notes.sort((a, b) => {
+        return recipes.sort((a, b) => {
             if (a.createdAt > b.createdAt) {
                 return -1
             } else if (a.createdAt < b.createdAt) {
@@ -69,7 +69,7 @@ const sortNotes = (sortBy) => {
             }
         })
     } else if (sortBy === 'alphabetical') {
-        return notes.sort((a, b) => {
+        return recipes.sort((a, b) => {
             if (a.title.toLowerCase() < b.title.toLowerCase()) {
                 return -1
             } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
@@ -79,33 +79,33 @@ const sortNotes = (sortBy) => {
             }
         })
     } else {
-        return notes
+        return recipes
     }
 }
 
-const updateNote = (id, updates) => {
-    const note = notes.find((note) => note.id === id)
+const updateRecipe = (id, updates) => {
+    const recipe = recipes.find((recipe) => recipe.id === id)
 
-    if(!note) {
+    if(!recipe) {
         return
     }
 
     if(typeof updates.title === 'string') {
-        note.title = updates.title
-        note.updatedAt = moment().valueOf()
+        recipe.title = updates.title
+        recipe.updatedAt = moment().valueOf()
     }
 
     if(typeof updates.body === 'string') {
-        note.body = updates.body
-        note.updatedAt = moment().valueOf()
+        recipe.body = updates.body
+        recipe.updatedAt = moment().valueOf()
     }
 
-    saveNotes()
-    return note
+    saveRecipes()
+    return recipe
 }
 
-notes = loadNotes()
+recipes = loadRecipes()
 
-export { getNotes, createNote, removeNote, sortNotes, updateNote }
+export { getRecipes, createRecipe, removeRecipe, sortRecipes, updateRecipe }
 
 
