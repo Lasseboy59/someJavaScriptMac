@@ -156,3 +156,6 @@ commit_43:
 - and adde to webpack.config -> plugins: ['transform-object-rest-spread'] also in boilerplate
 - destructuring in todo-app filters and views
 - other option in todo-app-new / filters.js
+
+commit_44:
+- recipe-app inserted ingredients text field into edit page, works ok
