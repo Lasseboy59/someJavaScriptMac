@@ -1,12 +1,13 @@
 import moment from 'moment'
 import { getFilters } from './filters';
-import { sortNotes, getNotes } from './notes'
+import { sortNotes, getNotes } from './recipes'
 
 // Generate the DOM structure for a note
 const generateNoteDom = (note) => {
     const noteEl = document.createElement('a')
     const textEl = document.createElement('p')
     const statusEl = document.createElement('p')
+    const button = document.createElement('button')
 
     // Setup the note title text
     if(note.title.length > 0){
@@ -28,13 +29,12 @@ const generateNoteDom = (note) => {
     statusEl.classList.add('list-item__subtitle')
     noteEl.appendChild(statusEl)
 
-    console.log(notes)
     return noteEl
 }
 
 // Render application notes
 const renderNotes = () => {
-    const notesEl = document.querySelector('#notes')
+    const notesEl = document.querySelector('#recipes')
     const filters = getFilters()
     const notes = sortNotes(filters.sortBy)
     const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
@@ -55,9 +55,8 @@ const renderNotes = () => {
 }
 
 const initializeEditPage = (noteId) => {
-    const titleElement = document.querySelector('#note-title')
-    const bodyElement = document.querySelector('#note-body')
-    const recipeElement = document.querySelector('#recipe-body')
+    const titleElement = document.querySelector('#recipe-title')
+    const bodyElement = document.querySelector('#recipe-body')
     const updateElement = document.querySelector('#last-edited')
     const notes = getNotes()
     const note = notes.find((note) => note.id === noteId)
@@ -68,7 +67,6 @@ const initializeEditPage = (noteId) => {
     
     titleElement.value = note.title
     bodyElement.value = note.body
-    recipeElement.value = note.ingredients
     updateElement.textContent = generateLastEdited(note.updatedAt)
 }
 

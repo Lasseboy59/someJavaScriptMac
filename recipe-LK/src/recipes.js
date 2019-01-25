@@ -18,19 +18,17 @@ const loadNotes = () => {
 const getNotes = () => notes
 
 const createNote = () => {
-    const id = uuidv4()
-    const timestamp = moment().valueOf()
-    notes.push({
-        id: id,
-        createdAt: timestamp,
-        updatedAt: timestamp,
+    const newNote = {
+        id: uuidv4(),
+        createdAt: moment().valueOf(),
+        updatedAt: moment().valueOf(),
         title: '',
-        body: '',
-        ingredients: '' // text-ingredient, boolean
-    })
+        body: ''
+    }
+    notes.push(newNote)
     saveNotes()
 
-    return id
+    return newNote
 } 
 
 // Save the notes to local storage
@@ -99,11 +97,6 @@ const updateNote = (id, updates) => {
 
     if(typeof updates.body === 'string') {
         note.body = updates.body
-        note.updatedAt = moment().valueOf()
-    }
-
-    if(typeof updates.ingredients === 'string') {
-        note.ingredients = updates.ingredients
         note.updatedAt = moment().valueOf()
     }
 

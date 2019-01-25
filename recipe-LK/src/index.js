@@ -1,13 +1,13 @@
-import { getNotes, createNote, removeNote, updateNote } from './notes'
-import { getFilters, setFilters } from './filters'
+import { createNote } from './recipes'
+import { setFilters } from './filters'
 import { renderNotes } from './views'
 
 
 renderNotes()
 
-document.querySelector('#create-note').addEventListener('click', (e) => {
-    const id = createNote()
-    location.assign(`/edit.html#${id}`)
+document.querySelector('#create-recipe').addEventListener('click', (e) => {
+    const note = createNote()
+    location.assign(`/edit.html#${note.id}`)
 })  
 
 document.querySelector('#search-text').addEventListener('input', (e) => {

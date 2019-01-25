@@ -159,3 +159,6 @@ commit_43:
 
 commit_44:
 - recipe-app inserted ingredients text field into edit page, works ok
+
+commit_45:
+- basic functions, starting to build recipe-app

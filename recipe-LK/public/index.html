@@ -2,20 +2,20 @@
 
 <html>
     <head>   
-        <title>Notes App</title>
+        <title>Recipe App</title>
         <link rel="icon" href="/images/favicon.png">
         <link rel="stylesheet" href="/styles/styles.css">
     </head>
         <body>
             <header class="header">
                 <div class="container">
-                    <h1 class="header__title">Recipe App</h1>
-                    <h2 class="header__subtitle">save your recipes</h2>
+                    <h1 class="header__title">Recipes App</h1>
+                    <h2 class="header__subtitle">Save all your recipes</h2>
                 </div>
             </header>
             <div class="actions">
                 <div class="actions__container">
-                    <input id="search-text" type="text" class="input" placeholder="Filter notes">
+                    <input id="search-text" type="text" class="input" placeholder="Filter recipes">
                     <select id="filter-by" class="dropdown">
                         <option value="byEdited">Sort by last edited</option>
                         <option value="byCreated">Sort by recently created</option>
@@ -24,8 +24,8 @@
                 </div>
             </div>
             <div class="container">
-                <div id="notes"></div>
-                <button id="create-note"class="button">Create Note</button>
+                <div id="recipes"></div>
+                <button id="create-recipe"class="button">Add Recipe</button>
             </div>
             <script src="/scripts/index-bundle.js"></script> 
         </body>

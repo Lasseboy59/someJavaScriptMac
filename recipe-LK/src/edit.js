@@ -1,10 +1,9 @@
 import { initializeEditPage, generateLastEdited } from './views'
-import { updateNote, removeNote } from './notes'
+import { updateNote, removeNote } from './recipes'
 
-const titleElement = document.querySelector('#note-title')
-const bodyElement = document.querySelector('#note-body')
-const recipeElement = document.querySelector('#recipe-body')
-const removeElement = document.querySelector('#remove-note')
+const titleElement = document.querySelector('#recipe-title')
+const bodyElement = document.querySelector('#recipe-body')
+const removeElement = document.querySelector('#remove-recipe')
 const updateElement = document.querySelector('#last-edited')
 const noteId = location.hash.substring(1)
 
@@ -20,13 +19,6 @@ titleElement.addEventListener('input', (e) => {
 bodyElement.addEventListener('input', (e) => {
     const note = updateNote(noteId, {
         body: e.target.value
-    })
-    updateElement.textContent = generateLastEdited(note.updatedAt)
-})
-
-recipeElement.addEventListener('input', (e) => {
-    const note = updateNote(noteId, {
-        ingredients: e.target.value
     })
     updateElement.textContent = generateLastEdited(note.updatedAt)
 })
