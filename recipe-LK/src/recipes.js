@@ -17,19 +17,20 @@ const loadRecipes = () => {
 // Expose recipes from module
 const getRecipes = () => recipes
 
+// Create recipe
 const createRecipe = () => {
     const newRecipe = {
         id: uuidv4(),
+        title: '',
+        text: '',
         createdAt: moment().valueOf(),
         updatedAt: moment().valueOf(),
-        title: '',
-        body: ''
+        ingredients: []
     }
     recipes.push(newRecipe)
     saveRecipes()
-
     return newRecipe
-} 
+}
 
 // Save the recipes to local storage
 const saveRecipes = () => {
@@ -106,6 +107,6 @@ const updateRecipe = (id, updates) => {
 
 recipes = loadRecipes()
 
-export { getRecipes, createRecipe, removeRecipe, sortRecipes, updateRecipe }
+export { getRecipes, createRecipe, removeRecipe, sortRecipes, updateRecipe, saveRecipes }
 
 

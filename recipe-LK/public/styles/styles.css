@@ -183,3 +183,209 @@ a {
     text-align: center;
     margin: 3.2rem 0;
 }
+
+/****** Edit page */
+
+#time-stamp {
+    padding: .2rem .4rem;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+ /* Main section/container */
+.main-edit-section {
+    max-width: 40rem;
+    padding: 0 1.6rem;
+    margin: 0 auto;
+}
+
+.main-edit-section__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    /* width: 20rem; */
+    max-width: 100%;
+}
+
+ /* Inputs */
+.main-edit-section__container #recipe-title {
+    width: 100%;
+    padding: .8rem .8rem;
+    font-size: 1.3rem;
+    font-weight: 300;
+    border-radius: 0.3rem;
+    border: 1px solid #DEDFE0;
+    margin:   0 0 1.5rem 0;
+    transition: border .3s ease;
+}
+
+.main-edit-section__container #recipe-title:focus {
+    border: 1px solid rgba(152, 106, 188, 0.966);
+    outline: none;
+}
+
+.main-edit-section__container #recipe-body {
+    width: 100%;
+    padding: .8rem .8rem;
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: 0.3rem;
+    border: 1px solid #DEDFE0;
+    font-family: 'Helvetica', sans-serif;
+    transition: border .3s ease;
+}
+
+.main-edit-section__container #recipe-body:focus {
+    border: 1px solid rgba(152, 106, 188, 0.966);
+    outline: none;
+}
+
+.ingredient-title {
+    font-size: 2rem;
+    margin: 1.5rem 0 .5rem 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 0.1rem;
+}
+
+ /* Ingredients container and settings*/
+#ingredients {
+    width: 100%
+}
+
+.ingredients-wrapper {
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,.05);
+    margin: 1rem 0;
+    padding: 1.2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 5px 5px 10px 0 rgba(0,0,0,.05);
+    transition: background-color .3s ease;
+    background-color: #fafbfc;
+    border-radius: 4px; 
+    width: 100%;
+    cursor: pointer;
+}
+
+.ingredients-wrapper:hover {
+    background-color: #f3f5f7; 
+}
+
+ /* Ingredient buttons */
+.btn-remove {
+    display: flex;
+    align-items: center;
+    background-color: rgba(233, 78, 78, 0.966);
+    padding: 0.4rem 0.8rem;
+    margin: 0;
+}
+
+.btn-remove:hover {
+    background-color: rgb(233, 78, 78);
+}
+
+.svg-inline--fa {
+    width: 1rem;
+}
+
+.ingredients-wrapper__checkbox__span {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+ /* Checkbox config */
+.ingredients-wrapper__checkbox__span input[type='checkbox'] {
+    border: 1px solid #ccc;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    background: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-right: 1.3rem;
+    border-radius: 50%;
+    outline: none;
+    transition: background-color .3s ease;
+}
+
+.ingredients-wrapper__checkbox__span input[type='checkbox']:checked {
+    background: rgba(152, 106, 188, 0.966);
+    border: rgba(152, 106, 188, 0.966);
+}
+
+ /* Add ingredients form */
+#ingredient-form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+#ingredient-form input[type='text'] {
+    padding: .2rem .4rem;
+    height: 2.78rem;
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: 0.3rem;
+    border: 1px solid #DEDFE0;
+    transition: border .3s ease;
+    margin-right: 1rem;
+    width: 50%;
+}
+
+#ingredient-form input[type='text']:focus {
+    border: 1px solid rgba(152, 106, 188, 0.966);
+    outline: none;
+}
+
+ /* Basic buttons */
+.btn-ingredient {
+    margin: 0;
+    padding: 0.8rem 1.9rem;
+}
+
+.ingredient-basic-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1rem 0 3rem 0;
+    width: 100%
+}
+
+.btn-save {
+    margin: 0 1rem 0 0;
+}
+
+/** Media Queries for edit.html / mobile settings **/
+@media (max-width: 22.1rem) {
+        
+    #ingredient-form {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ingredient-form input[type='text'] {
+        margin:0 0 2.5rem 0;
+    }
+
+    .ingredient-basic-btn {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-save {
+        margin: 0 0 2.5rem 0;
+    }
+} 

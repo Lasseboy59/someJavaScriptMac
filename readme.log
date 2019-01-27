@@ -165,3 +165,6 @@ commit_45:
 
 commit_46:
 - starting recipe-app boiler ready
+
+commit_47:
+- added ingredients.js functions hanging
