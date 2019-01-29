@@ -1,9 +1,9 @@
-import { initializeEditPage, generateLastEdited } from './views'
+import { recipeRender, initializeEditPage, generateLastEdited } from './views'
 import { createIngridient } from './ingredients'
 import { updateRecipe, removeRecipe } from './recipes'
 
 const recipeTitle = document.querySelector('#recipe-title')
-const recipeBody = document.querySelector('#recipe-body')
+const recipeText = document.querySelector('#recipe-body')
 const ingredientForm = document.querySelector('#ingredient-form')
 const removeElement = document.querySelector('#remove-recipe')
 const updateElement = document.querySelector('#last-edited')
@@ -19,10 +19,10 @@ ingredientForm.addEventListener('submit', (e) => {
     const text = e.target.elements.addIngridient.value.trim()
     e.preventDefault()
     const recipe = createIngridient(recipeId, text)
-    timeStamp.textContent = generatelastEdited(recipe.updatedAt)
+    // updateElement.textContent = generatelastEdited(recipe.updatedAt)
     e.target.elements.addIngridient.value = ''
     recipeRender(recipeId)
-    scrollToBottom();
+    // scrollToBottom();
 })
 
 
@@ -35,9 +35,9 @@ recipeTitle.addEventListener('input', (e) => {
 })
 
 // Body update
-recipeBody.addEventListener('input', (e) => {
+recipeText.addEventListener('input', (e) => {
     const recipe = updateRecipe(recipeId, {
-        body: e.target.value
+        text: e.target.value
     })
     updateElement.textContent = generateLastEdited(recipe.updatedAt)
 })

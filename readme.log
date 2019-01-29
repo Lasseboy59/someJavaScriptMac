@@ -167,4 +167,6 @@ commit_46:
 - starting recipe-app boiler ready
 
 commit_47:
-- added ingredients.js functions hanging
+- started recipe-LK-2 directory
+- basic functionality on edit-page, without ingredients
+- added ingredients.js file

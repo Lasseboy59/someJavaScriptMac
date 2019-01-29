@@ -15,6 +15,7 @@ const loadRecipes = () => {
 }
 
 // Expose recipes from module
+loadRecipes()
 const getRecipes = () => recipes
 
 // Create recipe
