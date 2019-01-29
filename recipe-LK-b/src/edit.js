@@ -1,6 +1,6 @@
 // Imports
 import { recipeRender, generateLastEdited } from './views'
-// import { createIngridient } from './ingredients'
+import { createIngridient } from './ingredients'
 import { updateRecipe, removeRecipe, loadRecipes } from './recipes'
 
 // Title and text inputs, form selector and buttons

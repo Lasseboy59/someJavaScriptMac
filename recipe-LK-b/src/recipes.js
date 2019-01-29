@@ -25,6 +25,7 @@ const createRecipe = () => {
         id: uuidv4(),
         title: '',
         body: '',
+        ingredients: [],
         createdAt: moment().valueOf(),
         updatedAt: moment().valueOf(),
     }
