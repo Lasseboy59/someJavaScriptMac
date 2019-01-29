@@ -170,3 +170,6 @@ commit_47:
 - started recipe-LK-2 directory
 - basic functionality on edit-page, without ingredients
 - added ingredients.js file
+
+commit_50:
+- started recipe-LK-B, basic functionality
