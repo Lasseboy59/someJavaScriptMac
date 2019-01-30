@@ -182,3 +182,5 @@ commit_52:
 - added some functionality to views.js
 - still missing functionality
 
+commit_53:
+- basic functionality with ingredients

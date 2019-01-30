@@ -84,6 +84,7 @@ const recipeRender = (recipeId) => {
     // console.log(ingredientArray.join('\r\n'));
     // renderIngredients(recipeId)
     
+    renderIngredients(recipeId)
 }
 
 
@@ -101,18 +102,17 @@ const renderIngredients = (recipeId) => {
 
     ingredientEl.innerHTML = ''
     // document.querySelector('#ingredients').appendChild(generateSummaryDOM(recipes.title))
-
     // ingredientEl.appendChild(generateIngredientDOM(recipeId))
 
     recipe.ingredients.forEach((ingredient) => {
-        ingredientEl.appendChild(generateIngredientDOM(ingredient.title + ' '))
+        ingredientEl.appendChild(generateIngredientDOM(ingredient))
     })
 
 }
 
 
 // Get the DOM elements for an individual todo
-const generateIngredientDOM = (todo) => {
+const generateIngredientDOM = (ingredient) => {
     const todoEl = document.createElement('label')
     const containerEl = document.createElement('div')
     const checkbox = document.createElement('input')
@@ -121,15 +121,15 @@ const generateIngredientDOM = (todo) => {
 
     // Setup todo checkbox
     checkbox.setAttribute('type', 'checkbox')
-    checkbox.checked = todo.completed 
+    checkbox.checked = ingredient.completed 
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', (e) => {
-        toggleTodo(todo.id)
+        toggleTodo(ingredient.id)
         renderTodos()
     })
 
     // Setup the todo title text
-    textEl.textContent = todo.text
+    textEl.textContent = ingredient.title
     containerEl.appendChild(textEl)
 
     // Setup container
