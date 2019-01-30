@@ -31,7 +31,6 @@ ingredientForm.addEventListener('submit', (e) => {
     updateElement.textContent = generatelastEdited(recipe.updatedAt)
     e.target.elements.addIngridient.value = ''
     recipeRender(recipeId)
-    // scrollToBottom();
 })
 
 // Title update
@@ -56,17 +55,10 @@ removeElement.addEventListener('click', (e) => {
     location.assign('/index.html')
 })
 
-// Save recipe "Just for UX purposes"
+// Save recipe 
 saveRecipe.addEventListener('click', (e) => {
-    location.assign('/index.html')
-})
-
-// Print recipes array to console
-printRecipe.addEventListener('click', (e) => {
-    // console.log(recipes)
-    // recipeRender(recipeId)
     renderIngredients(recipeId)
-
+    location.assign('/index.html')
 })
 
 // Window event listener

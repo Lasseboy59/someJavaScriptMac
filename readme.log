@@ -184,3 +184,7 @@ commit_52:
 
 commit_53:
 - basic functionality with ingredients
+
+commit_54:
+- basic functionality works with Firefox
+- missing filtering to homepage about ingredients

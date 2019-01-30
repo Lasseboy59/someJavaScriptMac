@@ -1,6 +1,7 @@
 import moment from 'moment'
 import { getFilters } from './filters';
 import { sortRecipes, getRecipes } from './recipes'
+import { removeIngridient, toggleIngridient } from './ingredients'
 
 // Generate the DOM structure for a recipe
 const generateRecipeDom = (recipe) => {
@@ -38,7 +39,7 @@ const renderRecipes = () => {
     const recipes = sortRecipes(filters.sortBy)
     const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
  
-    recipesEL.innerHTML = ''
+    recipesEL.innerHTML = ' '
 
     if(filteredRecipes.length > 0){
         filteredRecipes.forEach((recipe) => {
@@ -101,90 +102,50 @@ const renderIngredients = (recipeId) => {
     }
 
     ingredientEl.innerHTML = ''
-    // document.querySelector('#ingredients').appendChild(generateSummaryDOM(recipes.title))
-    // ingredientEl.appendChild(generateIngredientDOM(recipeId))
 
     recipe.ingredients.forEach((ingredient) => {
-        ingredientEl.appendChild(generateIngredientDOM(ingredient))
+        ingredientEl.appendChild(generateIngredientDOM(recipeId, ingredient))
     })
 
 }
 
 
-// Get the DOM elements for an individual todo
-const generateIngredientDOM = (ingredient) => {
-    const todoEl = document.createElement('label')
+// Get the DOM elements for an individual ingredient
+const generateIngredientDOM = (recipeId, ingredient) => {
+    const ingredientEl = document.createElement('label')
     const containerEl = document.createElement('div')
     const checkbox = document.createElement('input')
     const textEl = document.createElement('span')
     const button = document.createElement('button')
 
-    // Setup todo checkbox
+    // Setup ingredient checkbox
     checkbox.setAttribute('type', 'checkbox')
     checkbox.checked = ingredient.completed 
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', (e) => {
-        toggleTodo(ingredient.id)
-        renderTodos()
+        toggleIngridient(ingredient)
+        renderRecipes()
     })
 
-    // Setup the todo title text
+    // Setup the ingredient title text
     textEl.textContent = ingredient.title
     containerEl.appendChild(textEl)
 
     // Setup container
-    todoEl.classList.add('list-item')
+    ingredientEl.classList.add('list-item')
     containerEl.classList.add('list-item__container')
-    todoEl.appendChild(containerEl)
+    ingredientEl.appendChild(containerEl)
 
     // Setup the remove button
     button.textContent = 'remove'
     button.classList.add('button', 'button--text')
-    todoEl.appendChild(button)
+    ingredientEl.appendChild(button)
     button.addEventListener('click', (e) => {
-        removeTodo(todo.id)
-        renderTodos()
-    })
-
-    return todoEl
-}
-
-// Get the DOM elements for an individual todo
-const generateTodoDOMold = (recipeId) => {
-    const todoEl = document.createElement('label')
-    const containerEl = document.createElement('div')
-    const checkbox = document.createElement('input')
-    const textEl = document.createElement('span')
-    const button = document.createElement('button')
-
-    // Setup todo checkbox
-    checkbox.setAttribute('type', 'checkbox')
-    checkbox.checked = recipeId.title
-    containerEl.appendChild(checkbox)
-    checkbox.addEventListener('click', (e) => {
-        toggleTodo(recipeId)
+        removeIngridient(recipeId, ingredient)
         renderRecipes()
     })
 
-    // Setup the todo title text
-    textEl.textContent = recipeId.title
-    containerEl.appendChild(textEl)
-
-    // Setup container
-    todoEl.classList.add('list-item')
-    containerEl.classList.add('list-item__container')
-    todoEl.appendChild(containerEl)
-
-    // Setup the remove button
-    button.textContent = 'remove'
-    button.classList.add('button', 'button--text')
-    todoEl.appendChild(button)
-    button.addEventListener('click', (e) => {
-        removeTodo(todo.id)
-        renderRecipes()
-    })
-
-    return todoEl
+    return ingredientEl
 }
 
  // Generate last edited message

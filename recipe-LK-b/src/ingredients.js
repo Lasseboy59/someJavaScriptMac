@@ -37,6 +37,7 @@ const createIngridient = (id, title) => {
 
 // Delete ingredient
 const removeIngridient = (id, { title }) => {
+    console.log('remove ingredient' + id, title)
     const receipe = getRecipes().find((item) => item.id === id)
     const ingredientIndex = receipe.ingredients.findIndex((item) => item.title === title)
 
