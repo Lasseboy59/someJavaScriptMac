@@ -26,8 +26,9 @@ const createRecipe = () => {
         title: '',
         body: '',
         ingredients: [],
+        completed: false,
         createdAt: moment().valueOf(),
-        updatedAt: moment().valueOf(),
+        updatedAt: moment().valueOf()
     }
     recipes.push(newRecipe)
     saveRecipes()

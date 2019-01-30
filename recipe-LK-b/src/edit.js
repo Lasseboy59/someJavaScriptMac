@@ -1,18 +1,24 @@
 // Imports
-import { recipeRender, generateLastEdited } from './views'
+import { recipeRender, generateLastEdited, renderIngredients } from './views'
 import { createIngridient } from './ingredients'
-import { updateRecipe, removeRecipe, loadRecipes } from './recipes'
+import { updateRecipe, removeRecipe, loadRecipes, getRecipes } from './recipes'
 
 // Title and text inputs, form selector and buttons
 const recipeTitle       = document.querySelector('#recipe-title')
 const recipeBody        = document.querySelector('#recipe-body')
 const ingredientForm    = document.querySelector('#ingredient-form')
 const saveRecipe        = document.querySelector('#save-recipe')
+const printRecipe        = document.querySelector('#print-recipe')
 const removeElement     = document.querySelector('#remove-recipe')
 const updateElement     = document.querySelector('#last-edited')
 
 // Recipe Id
 const recipeId = location.hash.substring(1)
+
+let recipes = []
+
+// Expose recipes from module
+recipes = loadRecipes()
 
 // Render recipe
 recipeRender(recipeId)
@@ -53,6 +59,14 @@ removeElement.addEventListener('click', (e) => {
 // Save recipe "Just for UX purposes"
 saveRecipe.addEventListener('click', (e) => {
     location.assign('/index.html')
+})
+
+// Print recipes array to console
+printRecipe.addEventListener('click', (e) => {
+    // console.log(recipes)
+    // recipeRender(recipeId)
+    renderIngredients(recipeId)
+
 })
 
 // Window event listener

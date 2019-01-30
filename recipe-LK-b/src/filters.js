@@ -1,6 +1,7 @@
 const filters = {
     searchText: '',
-    sortBy: 'byEdited'
+    sortBy: 'byEdited',
+    completed: false
 }
 
 const getFilters = () => filters

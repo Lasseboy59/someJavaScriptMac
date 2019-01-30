@@ -9,6 +9,9 @@ Modifier    -> house__condo
 
 */
 
+
+/* Base Styles */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -36,18 +39,18 @@ a {
 /* Container */
 
 .container {
-  max-width: 60rem;
-  margin: 0 auto;
-  padding: 0 1.6rem;
-}
-
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+  
 /* Header */
 
 .header {
-  background: #43799c;
-  color: white;
-  padding: 1.6rem 0;
-}
+    background: #43799c;
+    color: white;
+    padding: 1.6rem 0;
+  }
 
 .header__title {
   font-size: 3.2rem;
@@ -55,10 +58,9 @@ a {
 }
 
 .header__subtitle {
-  font-size: 1.6rem;
-  font-weight: 300;
-}
-
+    font-size: 1.6rem;
+    font-weight: 300;
+  }
 /* Actions Bar */
 
 .actions {
@@ -66,6 +68,19 @@ a {
     border-bottom: 1px solid #dedfe0;
     padding: .8rem
 }
+
+.actions__container {
+    align-items: center;
+    display: flex;
+    max-width: 60rem;
+    margin: 0 auto;
+    min-height: 3rem;
+    padding: 0 1.6rem;
+}
+
+/* .actions__container--spaced {
+    justify-content: space-between
+} */
 
 .actions__container {
     align-items: center;
@@ -102,19 +117,29 @@ a {
     margin-right: .8rem;
 }
 
+.checkbox {
+    display: flex;
+    align-items: baseline;
+}
+
+.checkbox > input {
+    margin-right: .4rem;
+}
+
+/* listItem */
 .button {
-    background: #43799c;
+    background: #7044a0;
     border: none;
-    border-bottom: 2px solid #396684;
+    border-bottom: 2px solid #603a88;
     color: white;
     font-size: 1.4rem;
     font-weight: 300;
     padding: .8rem;
-    transition: background .3s ease;
+    transition: background .3s ease, color .3s ease;
 }
 
 .button:hover {
-    background: #396684;
+    background: #5F3A87;
 }
 
 .button--secondary {
@@ -124,6 +149,18 @@ a {
 
 .button--secondary:hover {
     background: #6E6E6E;
+}
+
+.button--text {
+    background: none;
+    border: none;
+    color: #aaa;
+}
+
+.button--text:hover {
+    background: none;
+    color: white;
+    text-decoration: underline;
 }
 
 /* Note editor */
@@ -152,19 +189,50 @@ a {
 
 /* Note List Item */
 
+/* .list-item {
+    text-decoration: none;
+    color: #fafafa;
+    cursor: pointer;
+    background: #887e96;
+    border: 1px solid #8e8796;
+    margin: 1.6rem 0;
+    padding: 1rem 1.6rem;
+    display: block;
+    transition: background .3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+} */
+
 .list-item {
     text-decoration: none;
-    color: #333333;
+    color: #b6a8a8;
     background: #F7F7F7;
     border: 1px solid #dedfe0;
     margin: 1.6rem 0;
     padding: 1.6rem;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     transition: background .3s ease;
 }
 
-.list-item:hover {
+/* .list-item:hover {
     background: #eeeeee;
+} */
+
+.list-item__container {
+    display: flex;
+    font-size: 1.8rem;
+    font-weight: 300;
+    align-items: baseline;
+}
+
+.list-item__container > *:first-child {
+    margin-right: .8rem;
+}
+
+.list-item:hover {
+    background: #978da1;
 }
 
 .list-item__title {
@@ -179,27 +247,37 @@ a {
     font-style: italic;
 }
 
+.list-title {
+    margin: 3.2rem 0 1.6rem;
+}
+
 .empty-message {
-    text-align: center;
     margin: 3.2rem 0;
 }
 
-.ingredient-title {
-    font-size: 2rem;
-    margin: 1.5rem 0 .5rem 0;
-    display: block;
-    width: 100%;
-    text-align: center;
-    letter-spacing: 0.1rem;
+.button--text {
+    flex: 0%;
+    background: none;
+    border: none;
+    color: #aaa;
 }
 
-.btn-remove {
-    flex: 0%;
-    background-color: red;
+.btn-add {
+    background-color: #43799c;
+    margin: 0 0 2.5rem 0;
+}
+
+.btn-print {
+    background-color: rgb(0, 217, 255);
     margin: 0 0 2.5rem 0;
 }
 
 .btn-save {
     background-color: green;
+    margin: 0 0 2.5rem 0;
+}
+
+.btn-remove {
+    background-color: red;
     margin: 0 0 2.5rem 0;
 }

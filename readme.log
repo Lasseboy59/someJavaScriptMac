@@ -176,3 +176,9 @@ commit_50:
 
 commit_51:
 - some functionality in ingredients
+
+commit_52:
+- made modifications to styles.CSS
+- added some functionality to views.js
+- still missing functionality
+
