@@ -37,10 +37,21 @@ const createIngridient = (id, title) => {
 }
 
 // Delete ingredient
-const removeIngridient = (id, { title }) => {
+const removeIngridientOld = (id, { title }) => {
     console.log('remove ingredient' + id, title)
     const receipe = getRecipes().find((item) => item.id === id)
     const ingredientIndex = receipe.ingredients.findIndex((item) => item.title === title)
+
+    if (ingredientIndex > -1) {
+        receipe.ingredients.splice(ingredientIndex, 1)
+        saveRecipes()
+    }
+}
+
+const removeIngridient = (id, ingredient) => {
+    console.log('remove ingredient' + id, ingredient.title)
+    const receipe = getRecipes().find((item) => item.id === id)
+    const ingredientIndex = receipe.ingredients.findIndex((item) => item.title === ingredient.title)
 
     if (ingredientIndex > -1) {
         receipe.ingredients.splice(ingredientIndex, 1)

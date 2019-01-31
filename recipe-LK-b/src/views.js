@@ -24,8 +24,7 @@ const generateRecipeDom = (recipe) => {
     recipeEL.classList.add('list-item')
 
 
-    // Setup the statusmessage
-    // Check if every ingredient
+    // Setup the statusmessage, check if every ingredient
     const every = recipe.ingredients.every((ingredient) => ingredient.exist)
     // Check if one ingredient
     const some  = recipe.ingredients.some((ingredient => ingredient.exist))
@@ -96,7 +95,6 @@ const recipeRender = (recipeId) => {
     renderIngredients(recipeId)
 }
 
-
 // Render application recipes
 const renderIngredients = (recipeId) => {
     const ingredientEl = document.querySelector('#ingredients')
@@ -123,13 +121,12 @@ const generateIngredientDOM = (recipeId, ingredient) => {
     const textEl = document.createElement('span')
     const button = document.createElement('button')
 
-    // Setup ingredient checkbox
+    // Checkbox setup & config
     checkbox.setAttribute('type', 'checkbox')
     checkbox.checked = ingredient.exist 
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', (e) => {
         toggleIngridient(ingredient)
-        renderRecipes()
     })
 
     // Setup the ingredient title text
@@ -147,7 +144,7 @@ const generateIngredientDOM = (recipeId, ingredient) => {
     ingredientEl.appendChild(button)
     button.addEventListener('click', (e) => {
         removeIngridient(recipeId, ingredient)
-        renderRecipes()
+        renderRecipes(recipeId)
     })
 
     return ingredientEl
