@@ -2,6 +2,7 @@
 import moment from 'moment';
 import uuidv4 from 'uuid/v4'
 
+// Recipes array
 let recipes = []
 
 // Read existing recipes from the storege
@@ -26,7 +27,6 @@ const createRecipe = () => {
         title: '',
         body: '',
         ingredients: [],
-        completed: false,
         createdAt: moment().valueOf(),
         updatedAt: moment().valueOf()
     }

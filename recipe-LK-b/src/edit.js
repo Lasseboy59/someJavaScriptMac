@@ -1,20 +1,20 @@
 // Imports
 import { recipeRender, generateLastEdited, renderIngredients } from './views'
 import { createIngridient } from './ingredients'
-import { updateRecipe, removeRecipe, loadRecipes, getRecipes } from './recipes'
+import { updateRecipe, removeRecipe, loadRecipes } from './recipes'
 
 // Title and text inputs, form selector and buttons
 const recipeTitle       = document.querySelector('#recipe-title')
 const recipeBody        = document.querySelector('#recipe-body')
 const ingredientForm    = document.querySelector('#ingredient-form')
 const saveRecipe        = document.querySelector('#save-recipe')
-const printRecipe        = document.querySelector('#print-recipe')
 const removeElement     = document.querySelector('#remove-recipe')
 const updateElement     = document.querySelector('#last-edited')
 
 // Recipe Id
 const recipeId = location.hash.substring(1)
 
+// Recipes array
 let recipes = []
 
 // Expose recipes from module

@@ -1,6 +1,7 @@
 // Import appropriate functions
 import moment from "moment";
 import { getRecipes, saveRecipes } from './recipes'
+import { renderRecipes } from "./views";
 
 // Fetch recipes
 const recipes = getRecipes()
@@ -51,7 +52,7 @@ const removeIngridient = (id, { title }) => {
 const toggleIngridient = (ingredient) => {
     ingredient.exist = !ingredient.exist
     saveRecipes()
+    renderRecipes()
 }
 
-//Export appropriate functions
 export { createIngridient, removeIngridient, toggleIngridient }

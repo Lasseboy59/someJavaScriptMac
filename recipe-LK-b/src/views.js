@@ -25,7 +25,23 @@ const generateRecipeDom = (recipe) => {
 
 
     // Setup the statusmessage
-    statusEl.textContent = generateLastEdited(recipe.updatedAt)
+    // Check if every ingredient
+    const every = recipe.ingredients.every((ingredient) => ingredient.exist)
+    // Check if one ingredient
+    const some  = recipe.ingredients.some((ingredient => ingredient.exist))
+
+    if (recipe.ingredients.length > 0) {
+        if (every) {
+            statusEl.textContent = 'You have all the ingredients'
+        } else if (some) {
+            statusEl.textContent = 'You have some of the ingredients'
+        } else {
+            statusEl.textContent = 'You have none of the ingredients'
+        }
+    } else {
+        statusEl.textContent = 'You don\'t have any ingredients'
+    }
+
     statusEl.classList.add('list-item__subtitle')
     recipeEL.appendChild(statusEl)
 
@@ -76,14 +92,6 @@ const recipeRender = (recipeId) => {
     recipe.ingredients.forEach((ingredient) => {
         ingredientsElement.value = ingredientsElement.append(ingredient.title + ' ')
     })
-
-    // recipe.ingredients.forEach((ingredient) => {
-    //     ingredientArray.push(ingredient.title)
-    // })
-    // ingredientsElement.append(ingredientArray.join('\r\n'))
-    // console.log(ingredientArray.join('\n\r'))
-    // console.log(ingredientArray.join('\r\n'));
-    // renderIngredients(recipeId)
     
     renderIngredients(recipeId)
 }
@@ -92,9 +100,7 @@ const recipeRender = (recipeId) => {
 // Render application recipes
 const renderIngredients = (recipeId) => {
     const ingredientEl = document.querySelector('#ingredients')
-    // const filters = getFilters()
     const recipes = getRecipes()
-
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
 
     if(!recipe){
@@ -109,7 +115,6 @@ const renderIngredients = (recipeId) => {
 
 }
 
-
 // Get the DOM elements for an individual ingredient
 const generateIngredientDOM = (recipeId, ingredient) => {
     const ingredientEl = document.createElement('label')
@@ -120,7 +125,7 @@ const generateIngredientDOM = (recipeId, ingredient) => {
 
     // Setup ingredient checkbox
     checkbox.setAttribute('type', 'checkbox')
-    checkbox.checked = ingredient.completed 
+    checkbox.checked = ingredient.exist 
     containerEl.appendChild(checkbox)
     checkbox.addEventListener('click', (e) => {
         toggleIngridient(ingredient)
@@ -152,6 +157,5 @@ const generateIngredientDOM = (recipeId, ingredient) => {
  const generateLastEdited = (timestamp) => {
      return `Last edited ${moment(timestamp).fromNow()}`
  }
-
 
 export { generateRecipeDom, generateLastEdited, renderRecipes, recipeRender, renderIngredients }

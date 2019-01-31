@@ -188,3 +188,6 @@ commit_53:
 commit_54:
 - basic functionality works with Firefox
 - missing filtering to homepage about ingredients
+
+commit_55:
+- all basic functionality ready, some cleaning and checking todo
